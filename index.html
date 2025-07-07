@@ -3,10 +3,10 @@
 <body></body>
 
 <script>
-
-const ws = new WebSocket(`ws://${window.location.hostname}`);
-ws.onopen = () => console.log('WebSocket connected');
-ws.onmessage = e => console.log('Message:', e.data);
-ws.onerror = e => console.error('WS error', e);
+  let ws;
+  const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+  console.log(proto)
+  ws = new WebSocket(`${proto}://${window.location.host}`);
+  ws.onmessage = (event) => { console.log(event.data); };
 </script>
 </html>
